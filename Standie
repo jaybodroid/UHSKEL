@@ -14,7 +14,7 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 local gun = "[Revolver]"
 table.insert(hosts, "Iaderite")
 table.insert(hosts, "V_GLys")
-local gunname = "[Revolver] - $1300"
+local gunname = "[LMG] - $3750"
     local randomPlayer = game.Players:GetPlayers()
 [math.random(1,#game.Players:GetPlayers())]
 
@@ -58,8 +58,8 @@ __index = hookmetamethod(game, "__index", function(t, k)
     return __index(t, k)
 end)
 
-local gun = "[Revolver]"
-local gunname = "[Revolver] - $1300"
+local gun = "[LMG]"
+local gunname = "[LMG] - $3750"
 
 local orbitDistance = 7
 local orbitSpeed = 7
@@ -79,12 +79,12 @@ function gunCheck()
             player.Backpack:FindFirstChild(gun):Destroy()
         end
     end
-    if tonumber(player.DataFolder.Inventory["[Revolver]"].Value) < 11 then
+    if tonumber(player.DataFolder.Inventory["[LMG]"].Value) < 100 then
         repeat
             task.wait(0.1)
-            player.Character:WaitForChild('HumanoidRootPart').CFrame = workspace.Ignored.Shop:FindFirstChild('12 [Revolver Ammo] - $75').Head.CFrame + Vector3.new(0, -4, 0)
-            fireclickdetector(workspace.Ignored.Shop:FindFirstChild('12 [Revolver Ammo] - $75').ClickDetector)
-        until tonumber(player.DataFolder.Inventory["[Revolver]"].Value) > 300
+            player.Character:WaitForChild('HumanoidRootPart').CFrame = workspace.Ignored.Shop:FindFirstChild('200 [LMG Ammo] - $300').Head.CFrame + Vector3.new(0, -4, 0)
+            fireclickdetector(workspace.Ignored.Shop:FindFirstChild('200 [LMG Ammo] - $300').ClickDetector)
+        until tonumber(player.DataFolder.Inventory["[LMG]"].Value) > 900
     end
 end
 
@@ -239,14 +239,14 @@ function autoStompAll()
             registerStompUser(v)
         end
         task.wait()
-        chat('Autostomping everyone who gets knocked.')
+        chat('EVERY OPP SHOT!')
     else
         autostomp = false
         for _,v in pairs(stompConnections) do
             v:Disconnect()
         end
         task.wait()
-        chat('No longer autostomping')
+        chat('No Longer Packing')
     end
 end
 
@@ -323,7 +323,7 @@ function register(v)
             elseif msg[1] == 'autokill'..prefix then
                 if msg[2] and game.Players:FindFirstChild(msg[2]) then
                     if not autokill then
-                        chat('Autokilling ' .. msg[2] .. ', ' .. game.Players[v].DisplayName)
+                        chat('No Mercy On ' .. msg[2] .. ', ' .. game.Players[v].DisplayName)
                         autokilltarget = msg[2]
                         autokill = true
                     else
@@ -331,7 +331,7 @@ function register(v)
                         autokilltarget = nil
                         wait(1)
                         player.Character.HumanoidRootPart.CFrame = players[v].Character.HumanoidRootPart.CFrame + Vector3.new(0,0,3)
-                        chat('Stopped autokilling ' .. msg[2] .. ', ' .. game.Players[v].DisplayName)
+                        chat('Mercy Given ' .. msg[2] .. ', ' .. game.Players[v].DisplayName)
                     end
                 end
             elseif msg[1] == 'knock'..prefix then
@@ -390,7 +390,7 @@ function register(v)
                 end
             end
         end)
-        chat('Registered ' .. game.Players[v].DisplayName)
+        chat('Sanctioned ' .. game.Players[v].DisplayName)
     end
 end
 
